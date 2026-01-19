@@ -1,8 +1,9 @@
 .pots-card {
-  background: #fffaf6;
+  background: white;
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+  margin-top: 12px;
 }
 
 .pots-header {

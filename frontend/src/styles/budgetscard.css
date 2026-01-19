@@ -1,0 +1,75 @@
+.budgets-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.budgets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budgets-header h3 {
+  margin: 0;
+}
+
+.see-details {
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+}
+
+.budgets-body {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.budget-chart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.budget-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.budget-center h4 {
+  margin: 0;
+}
+
+.budget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.budget-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.budget-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.budget-info span {
+  font-size: 13px;
+  color: #888;
+}

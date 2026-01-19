@@ -5,6 +5,8 @@ import Sidebar from "../components/Sidebar";
 import SummaryCards from "../components/SummaryCards";
 import api from "../services/api"
 import PotsCard from "../components/PotsCard";
+import TransactionCard from "../components/TransactionsCard";
+import BudgetsCard from "../components/BudgetsCard";
 function Dashboard(){
 
     const[balance,setBalance] = useState(0);
@@ -34,8 +36,10 @@ function Dashboard(){
                           income={income}
                           expenses={expenses}
             />
+            <div className="pots"><PotsCard/></div>
+            <TransactionCard/>
+            <BudgetsCard/>
         </div>
-        <PotsCard/>
         </div>
     );
 }
