@@ -1,0 +1,84 @@
+.dashboard-layout{
+    display: flex;
+    min-height: 100vh;
+    background: #f6f7f8;
+}
+
+.sidebar{
+    width: 220px;
+    background: #1f1f24;
+    color: white;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.logo{
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.sidebar nav a{
+    display: block;
+    padding: 10px 0;
+    color: #bbb;
+}
+
+.sidebar .active{
+    color: white;
+    font-weight: 600;
+}
+
+.logout{
+    margin-top: auto;
+    background: none;
+    border: none;
+    color: #aaa;
+}
+
+.dashboard-content{
+    flex: 1;
+    padding: 32px;
+    background: #f7f7f5;
+    min-height: 100vh;
+}
+
+.dashboard-title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.summary-cards{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card.card-dark{
+    background: #1f1f24;
+    color: white;
+}
+
+.card{
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0px 4px 12px rgba(0, 0,0, 0.04);
+}
+
+.card-label{
+    font-size: 14px;
+    color: #8c8c8c;
+    margin-bottom: 10px;
+}
+
+.card-dark .card-label{
+    color: #cfcfcf;
+}
+
+.card h2{
+    font-size: 28px;
+    font-weight: 600;
+}
