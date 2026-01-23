@@ -1,0 +1,44 @@
+.monthly-budgets-card{
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 24px;
+}
+
+.monthly-budgets-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.monthly-budgets-table{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.table-head,.table-row{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    font-size: 14px;
+}
+
+.table-head{
+    font-weight: 600;
+    color: #888;
+}
+
+.table-row{
+    background: #fafafa;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.positive{
+    color: #1f6f5b;
+}
+
+.negative{
+    color: #c0392b;
+}

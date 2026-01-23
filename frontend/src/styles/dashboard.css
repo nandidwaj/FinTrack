@@ -23,6 +23,7 @@
     display: block;
     padding: 10px 0;
     color: #bbb;
+    cursor: pointer;
 }
 
 .sidebar .active{
@@ -81,4 +82,23 @@
 .card h2{
     font-size: 28px;
     font-weight: 600;
+}
+
+.dashboard-grid{
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.dashboard-left{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dashboard-right{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }

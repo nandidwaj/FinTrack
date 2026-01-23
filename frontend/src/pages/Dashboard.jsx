@@ -6,7 +6,8 @@ import SummaryCards from "../components/SummaryCards";
 import api from "../services/api"
 import PotsCard from "../components/PotsCard";
 import TransactionCard from "../components/TransactionsCard";
-import BudgetsCard from "../components/BudgetsCard";
+import BudgetsCard from "../components/BudgetsPieCard";
+import MonthlyBudgetsCard from "../components/MonthlyBudgetsCard";
 function Dashboard(){
 
     const[balance,setBalance] = useState(0);
@@ -36,9 +37,17 @@ function Dashboard(){
                           income={income}
                           expenses={expenses}
             />
-            <div className="pots"><PotsCard/></div>
-            <TransactionCard/>
-            <BudgetsCard/>
+            <div className="dashboard-grid">
+                <div className="dashboard-left">
+                    <div className="pots"><PotsCard/></div>
+                    <TransactionCard/>
+                </div>
+                <div className="dashboard-right">
+                    <BudgetsCard/>
+                    <MonthlyBudgetsCard/>
+                </div>
+            </div>
+            
         </div>
         </div>
     );

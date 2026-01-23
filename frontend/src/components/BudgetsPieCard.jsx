@@ -6,7 +6,7 @@ import {
   Cell,
   ResponsiveContainer
 } from "recharts";
-import "../styles/budgetscard.css";
+import "../styles/budgetspiecard.css";
 
 const COLORS = ["#4f9da6", "#f4a261", "#2a9d8f", "#e76f51"];
 
