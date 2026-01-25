@@ -23,15 +23,26 @@ def create_budget():
 @jwt_required()
 def get_budgets():
     user_id = get_jwt_identity()
-    data = request.json
+    search = request.args.get("search","")
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(dictionary=True)
 
-    cur.execute(""" select b.budget_id,b.amount,b.month,b.year,c.name as category 
-                from budgets b join categories c on b.category_id = c.category_id 
-                where b.user_id=%s """,(user_id,))
-    budgets = cur.fetchall()
+    query = """ select b.budget_id,b.amount as budget_amount,b.month,b.year,c.name as category,ifnull(sum(t.amount),0) as spent  
+                from budgets b join categories c on b.category_id = c.category_id left join transcations t on t.category_id=b.category_id 
+                and t.user_id=b.user_id and t.type='expense' and month(t.transcation_date)=b.month and year(t.transcation_date)=b.year 
+                where b.user_id=%s 
+            """
+    
+    params = [user_id]
+
+    if search:
+        query+="and (c.name like %s or t.note like %s)"
+        params.extend([f"%{search}%",f"%{search}%"])
+
+    query+=""" group by b.budget_id,b.amount,b.month,b.year,c.name"""
+    cur.execute(query,params)
+    data = cur.fetchall()
     cur.close()
     conn.close()
 
-    return jsonify(budgets)
+    return jsonify(data)

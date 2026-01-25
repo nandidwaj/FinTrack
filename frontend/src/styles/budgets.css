@@ -3,3 +3,44 @@
     min-height: 100vh;
     background: #f6f7f8;
 }
+
+.budgets-content{
+    flex: 1;
+    padding: 32px;
+    background: #f6f7f8;
+}
+
+.transactions-title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.budgets-table{
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.budgets-header,.budget-row{
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 2fr 1fr;
+    padding: 12px 0;
+    border-radius: 10px;
+}
+
+.budgets-header{
+    font-weight: 600;
+    color: #888;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.budget-row{
+    border-bottom: none;
+    background-color: #fafafa;
+}
+
+.budget-row:last-child{
+    border-bottom: none;
+}
