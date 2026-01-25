@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar";
 import "../styles/transactions.css"
 import api from "../services/api"
 import AddTransactionModal from "../components/AddTransactionModal";
+import SearchBar from "../components/SearchBar";
 
 function Transactions(){
 
@@ -14,9 +15,16 @@ function Transactions(){
         fetchTransactions();
     },[]);
 
-    const fetchTransactions = async() =>{
+    const fetchTransactions = async(filters={}) =>{
         try{
-            const res = await api.get("/transactions/");
+            const res = await api.get("/transactions/",{
+                params:{
+                    search:filters.query || "",
+                    type:filters.type || "",
+                    from_date:filters.fromDate || "",
+                    to_date:filters.toDate || "",
+                }
+            });
             setTransactions(res.data);
         }catch(err){
             console.error("Failed to load transactions",err);
@@ -34,6 +42,9 @@ function Transactions(){
             <div className="dashboard-content">
                 <div className="transactions-header">
                     <h1 className="transactions-title">Transactions</h1>
+                    <div className="transactions-actions">
+                        <SearchBar placeholder="Search Transactions" onSearch={fetchTransactions}/>
+                    </div>
                     <button className="add-btn" onClick={()=>setShowModal(true)}>+ Add Transaction</button>
                 </div>
                 <div className="transactions-table">

@@ -24,13 +24,35 @@ def add_transaction():
 @jwt_required()
 def get_transaction():
     user_id = get_jwt_identity()
+    search = request.args.get("search","")
+    t_type = request.args.get("type","")
+    from_date = request.args.get("from_date")
+    to_date = request.args.get("to_date")
     conn = get_db_connection()
     cur = conn.cursor(dictionary=True)
 
-    cur.execute("""select t.transcation_id,t.amount,t.type,t.note,t.transcation_date,c.name as category_name
+    query = """select t.transcation_id,t.amount,t.type,t.note,t.transcation_date,c.name as category_name
                 from transcations t left join categories c on t.category_id = c.category_id 
                 where t.user_id=%s
-                order by t.transcation_date desc""",(user_id,))
+            """
+    params = [user_id]
+
+    if search:
+        query+="and (c.name like %s or t.note like %s)"
+        params.extend([f"%{search}%",f"%{search}%"])
+    if t_type:
+        query+="and t.type=%s"
+        params.append(t_type)
+    if from_date:
+        query+="and t.transcation_date>=%s"
+        params.append(from_date)
+    if to_date:
+        query+="and t.transcation_date<=%s"
+        params.append(to_date)
+
+    query+="order by t.transcation_date desc"
+
+    cur.execute(query,params)
     data = cur.fetchall()
     cur.close()
     conn.close()
