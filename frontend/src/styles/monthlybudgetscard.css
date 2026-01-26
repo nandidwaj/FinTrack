@@ -1,44 +1,83 @@
-.monthly-budgets-card{
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-top: 24px;
+.monthly-budgets-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-.monthly-budgets-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+/* Header */
+.monthly-budgets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
 }
 
-.monthly-budgets-table{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.monthly-budgets-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
 }
 
-.table-head,.table-row{
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    font-size: 14px;
+.see-details {
+  font-size: 13px;
+  color: #777;
+  cursor: pointer;
 }
 
-.table-head{
-    font-weight: 600;
-    color: #888;
+.see-details:hover {
+  color: #1f6f5b;
 }
 
-.table-row{
-    background: #fafafa;
-    padding: 12px;
-    border-radius: 10px;
+/* TABLE HEAD */
+.monthly-budgets-table-head {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr;
+  padding: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  border-bottom: 1px solid #eee;
 }
 
-.positive{
-    color: #1f6f5b;
+/* TABLE ROW */
+.monthly-budgets-table-row {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr;
+  padding: 14px 0;
+  font-size: 14px;
+  align-items: center;
 }
 
-.negative{
-    color: #c0392b;
+/* CATEGORY */
+.category {
+  text-align: left;
+  font-weight: 500;
+  color: #333;
+}
+
+/* NUMERIC COLUMNS */
+.amount {
+  text-align: right;
+  font-weight: 500;
+}
+
+/* SPENT */
+.spent {
+  text-align: right;
+  color: #c0392b;
+}
+
+/* REMAINING */
+.positive {
+  text-align: right;
+  color: #1f6f5b;
+  font-weight: 600;
+}
+
+.negative {
+  text-align: right;
+  color: #c0392b;
+  font-weight: 600;
 }

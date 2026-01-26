@@ -15,7 +15,7 @@ function Transactions(){
         fetchTransactions();
     },[]);
 
-    const fetchTransactions = async(filters={}) =>{
+const fetchTransactions = async(filters={}) =>{
         try{
             const res = await api.get("/transactions/",{
                 params:{

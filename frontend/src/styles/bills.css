@@ -3,3 +3,69 @@
     min-height: 100vh;
     background: #f6f7f8;
 }
+
+.bills-content{
+    flex: 1;
+    padding: 32px;
+    background: #f6f7f8;
+}
+
+.bills-table{
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.table-header,.table-row{
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 2fr 1fr 1.2fr 1fr;
+    padding: 12px 0;
+    border-radius: 10px;
+}
+
+.table-header{
+    font-weight: 600;
+    color: #888;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.table-row{
+    border-bottom: none;
+    background-color: #fafafa;
+}
+
+.table-row:last-child{
+    border-bottom: none;
+}
+
+/* Status text */
+.status-active {
+  color: #1b7f5a;
+  font-weight: 600;
+}
+
+.status-inactive {
+  color: #999;
+  font-weight: 600;
+}
+
+/* Deactivate button */
+.deactivate-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.deactivate-btn:hover {
+  background-color: #c0392b;
+}
+
+.deactivate-btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}

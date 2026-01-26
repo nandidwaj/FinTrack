@@ -10,10 +10,12 @@ import Transactions from './pages/Transactions'
 import Bills from './pages/Bills'
 import Budgets from './pages/Budgets'
 import Pots from './pages/Pots'
+import LandingPage from './pages/LandingPage'
 function App() {
   return (
     <BrowserRouter>
     <Routes>
+      <Route path='/' element={<LandingPage/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/dashboard' element={<Dashboard/>}></Route>

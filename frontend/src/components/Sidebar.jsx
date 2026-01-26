@@ -14,7 +14,7 @@ function Sidebar(){
                 <a onClick={()=>navigate("/pots")}>Pots</a>
                 <a onClick={()=>navigate("/bills")}>Bills</a>
             </nav>
-            <button className='logout' onClick={()=>navigate("/login")}>Log out</button>
+            <button className='logout' onClick={()=>navigate("/")}>Log out</button>
         </aside>
         </>
     );

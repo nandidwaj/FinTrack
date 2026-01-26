@@ -77,3 +77,18 @@
 .cancel-btn:hover {
     background: #e4e4e4;
 }
+
+.add-budget-form select{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    font-size: 15px;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border 0.2s ease;
+    color: #aaa;
+}

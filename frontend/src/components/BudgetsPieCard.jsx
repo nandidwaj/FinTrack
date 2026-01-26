@@ -20,17 +20,20 @@ function BudgetsCard() {
   const fetchBudgets = async () => {
     try {
       const res = await api.get("/dashboard/");
+
+      // USE BUDGET AMOUNT (NOT SPENT)
       const formatted = res.data.budgets.map((b) => ({
         name: b.category_name,
-        value: Number(b.amount),
+        value: Number(b.budget_amount)
       }));
+
       setBudgets(formatted);
     } catch (err) {
       console.error("Failed to load budgets", err);
     }
   };
 
-  const totalUsed = budgets.reduce((sum, b) => sum + b.value, 0);
+  const totalBudget = budgets.reduce((sum, b) => sum + b.value, 0);
 
   return (
     <div className="budgets-card">
@@ -52,15 +55,18 @@ function BudgetsCard() {
                 paddingAngle={4}
               >
                 {budgets.map((_, index) => (
-                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  <Cell
+                    key={index}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
               </Pie>
             </PieChart>
           </ResponsiveContainer>
 
           <div className="budget-center">
-            <h4>${totalUsed.toLocaleString()}</h4>
-            <span>Used</span>
+            <h4>${totalBudget.toLocaleString()}</h4>
+            <span>Total Budget</span>
           </div>
         </div>
 
@@ -68,7 +74,10 @@ function BudgetsCard() {
         <div className="budget-list">
           {budgets.map((b, i) => (
             <div key={i} className="budget-item">
-              <span className="dot" style={{ background: COLORS[i % COLORS.length] }} />
+              <span
+                className="dot"
+                style={{ background: COLORS[i % COLORS.length] }}
+              />
               <div className="budget-info">
                 <p>{b.name}</p>
                 <span>${b.value.toLocaleString()}</span>

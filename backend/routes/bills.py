@@ -59,10 +59,33 @@ def get_bills():
 
     process_bills(user_id)
 
+    search = request.args.get("search","")
+    frequency = request.args.get("frequency","")
+    due_date = request.args.get("due_date")
+    end_date = request.args.get("end_date")
+
     conn = get_db_connection()
     cur = conn.cursor(dictionary=True)
 
-    cur.execute(""" select bill_id,name,amount,frequency,next_due_date,end_date,is_active from recurring_bills where user_id=%s order by next_due_date""",(user_id,))
+    query=""" select bill_id,name,amount,frequency,next_due_date,end_date,is_active from recurring_bills where user_id=%s"""
+    params=[user_id]
+
+    if search:
+        query+="and (name like %s)"
+        params.extend([f"%{search}%"])
+    if frequency:
+        query+="and frequency=%s"
+        params.append(frequency)
+    if due_date:
+        query+="and next_due_date>=%s"
+        params.append(due_date)
+    if end_date:
+        query+="and end_date<=%s"
+        params.append(end_date)
+
+    query+=" order by next_due_date desc"
+
+    cur.execute(query,params)
     bills = cur.fetchall()
 
     cur.close()

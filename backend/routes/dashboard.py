@@ -26,11 +26,31 @@ def summary():
     pots=cur.fetchall()
 
     cur.execute(""" select t.transcation_id,t.amount,t.type,t.transcation_date,t.note,c.name as category from transcations t join categories c on t.category_id=c.category_id 
-                    where t.user_id = %s order by t.transcation_date desc limit 5""",(user_id,))
+                    where t.user_id = %s order by t.transcation_date desc limit 4""",(user_id,))
     transactions = cur.fetchall()
 
-    cur.execute(""" select b.budget_id,c.name as category_name,b.amount,b.month,b.year from budgets b 
-                left join categories c on b.category_id = c.category_id where b.user_id=%s order by b.year desc limit 5""",(user_id,))
+    cur.execute(""" SELECT 
+    b.budget_id,
+    c.name AS category_name,
+    b.amount AS budget_amount,
+    b.month,
+    b.year,
+    IFNULL(SUM(t.amount), 0) AS spent,
+    (b.amount - IFNULL(SUM(t.amount), 0)) AS remaining
+FROM budgets b
+JOIN categories c 
+    ON b.category_id = c.category_id
+LEFT JOIN transcations t 
+    ON t.category_id = b.category_id
+    AND t.user_id = b.user_id
+    AND t.type = 'expense'
+    AND MONTH(t.transcation_date) = b.month
+    AND YEAR(t.transcation_date) = b.year
+WHERE b.user_id = %s
+GROUP BY 
+    b.budget_id, b.amount, b.month, b.year, c.name
+ORDER BY b.year DESC, b.month DESC
+LIMIT 5;""",(user_id,))
     budgets = cur.fetchall()
 
     cur.execute(""" select b.bill_id,b.name,b.amount,c.name as category_name,b.next_due_date from recurring_bills b left join categories c on b.category_id = c.category_id where b.user_id=%s order by b.next_due_date desc limit 5""",(user_id,))
