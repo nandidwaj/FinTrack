@@ -131,5 +131,5 @@ FinTrack is a **full-stack personal finance management web application** that he
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/fintrack.git
+git clone https://github.com/nandidwaj/fintrack.git
 cd fintrack
